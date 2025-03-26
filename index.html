@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שריה אלישיב - טוען רבני מוסמך</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* צבעים */
+        :root {
+            --primary: #8B4513;     /* חום עמוק */
+            --secondary: #A0522D;   /* חום סיינה */
+            --accent: #D2B48C;      /* חום בהיר */
+            --dark: #3A2718;        /* חום כהה מאוד */
+            --light: #F5DEB3;       /* חום בהיר מאוד/בז' */
+            --background: #F9F4E9;  /* רקע בז' בהיר */
+            --text: #2F1A09;        /* טקסט כהה */
+        }
+
+        /* סגנונות כלליים */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            padding-top: 20px; /* כדי לוודא שהתוכן לא מכסה על הרקע */
+            font-family: 'Heebo', 'Segoe UI', sans-serif;
+            color: var(--text);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('./backimg.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.50; /* שנה את השקיפות לפי הצורך */
+        }
+          
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        html {
+            background-image: url('./backimg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            height: 100%;
+        }
+
+        /* סגנון Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background-color: var(--dark);
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4);
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-header {
+            margin-bottom: 4rem;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .animated-text-container {
+            height: 4rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .animated-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .tagline {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        .subtagline {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .highlight-text {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            margin-top: 2rem;
+            padding: 0.75rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* שקיפות גבוהה יותר */
+            background-image: none;
+            box-shadow: inset 0 0 50px rgba(139, 69, 19, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary);
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1.125rem;
+        }
+
+        .call-to-action {
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            color: var(--primary);
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            padding: 4rem 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* שקיפות גבוהה יותר */
+            background-image: none;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-form-container {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(58, 39, 24, 0.15);
+            border: 1px solid var(--accent);
+        }
+
+        .form-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-info {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .form-subtitle {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--accent);
+            border-radius: 0.5rem;
+            background-color: rgba(245, 222, 179, 0.1);
+            font-size: 1rem;
+            transition: box-shadow 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--accent);
+        }
+
+        .submit-button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            margin-top: 1rem;
+        }
+
+        .faq-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(58, 39, 24, 0.1);
+            border-right: 4px solid var(--primary);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1rem;
+            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 1.125rem;
+            background-color: white;
+            color: var(--text);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(210, 180, 140, 0.05);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transform: rotate(0);
+            transition: transform 0.3s;
+        }
+
+        .faq-icon.active {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            background-color: rgba(245, 222, 179, 0.1);
+            border-top: 1px solid var(--accent);
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            background-image: linear-gradient(to bottom, #3A2718, #26180F);
+            border-top: 3px solid var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .animated-text {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-background"></div>
+        
+        <div class="hero-content">
+            <div class="hero-header">
+                <h1 class="main-title">שריה אלישיב</h1>
+                <p class="subtitle">טוען רבני מוסמך</p>
+            </div>
+            
+            <div class="animated-text-container">
+                <h2 id="animated-text" class="animated-text">תובע?</h2>
+            </div>
+            
+            <h3 class="tagline">הזמן משחק לרעתך . . .</h3>
+            <p class="subtagline">כל טעות קריטית, ואפי' טעות קטנה ביותר</p>
+            <p class="highlight-text">בשביל זה אני כאן</p>
+            
+            <a href="#contact" class="cta-button">צור קשר עכשיו</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">מי אני?</h2>
+            <div class="about-content">
+                <p>
+                    שריה אלישיב, טוען רבני מוסמך בעל רישיון ממנהל בתי הדין, ובוגר מכון 'עליה' להכשרת טוענים רבניים הלכתיים במסלולי חושן משפט ואבן העזר (דיני משפחה) יעשה לכם סדר בכל מה שצריך.
+                </p>
+                <p>
+                    במסגרת עבודתי אני מעניק שירותי ייצוג, יעוץ, וליווי במגוון תחומים, הן בייצוג בדיני ממונות בבתי הדין הפרטיים, והן דיני משפחה (גירושין והמסתעף) בבתי הדין הרבניים, וכן בכתיבת חוזים והסכמים.
+                </p>
+                <p class="call-to-action">
+                    פנה אלי עוד היום לקביעת פגישה שתעזור לך לא לטעות ולא ליפול בפח
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">שאלו אותי</h2>
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <h3 class="form-title">צור איתי קשר</h3>
+                    <p class="contact-info">אני בטלפון: <a href="tel:0548491810">054-849-1810</a></p>
+                    <p class="contact-info">אני במייל: <a href="mailto:po9181@gmail.com">po9181@gmail.com</a></p>
+                    
+                    <h4 class="form-subtitle">השאירו פרטים ואחזור אליכם בהקדם</h4>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="fullName" placeholder="שם מלא" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="טלפון" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="אימייל" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="הודעה" rows="4" class="form-input"></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            לחיצה אחת ואני חוזר אליך
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="faq-container">
+                    <h3 class="faq-title">שאלות נפוצות</h3>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                האם אני יכול לייצג את עצמי?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>על אף שהדבר אפשרי מבחינה טכנית, קיים סיכון רב לטעויות קריטיות שעלולות להשפיע על תוצאות ההליך המשפטי. ייצוג מקצועי מסייע להימנע מטעויות אלה ומגן על האינטרסים שלך.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                מה העדיפות שלך כטוען רבני לעומת עו"ד לענייני משפחה?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>כטוען רבני, יש לי הכשרה ספציפית בהלכה היהודית, חוקי המדינה ודיני המשפחה. היתרון שלי הוא בשילוב של ידע הלכתי מעמיק עם הבנה של הפרוצדורה המשפטית בבתי הדין הרבניים.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                מדוע לא לקחת עוד מהשירות הסיוע המשפטי שניתן בחינם?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>הסיוע המשפטי הציבורי אמנם זמין, אך לרוב מוגבל בזמן ובמשאבים שיכולים להיות מוקדשים לתיק שלך. שירות פרטי מעניק ליווי מקיף, זמינות גבוהה, והתאמה אישית לצרכים הספציפיים שלך.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                יש לך ידע והכרות עם חוקי המדינה?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>כן בהחלט. חלק מההכשרה של הטוען הרבני, היא לימוד ושינון של חוקי המדינה הקשורים לדיני משפחה וסדרי דין, ואף מוקדש לכך שני מבחנים, ולכן השילוב של בקיאות בעומק ההלכה, וידע נרחב בחוקי המדינה הופך את הטוען רבני לאפקטיבי ביותר. כמו"כ כחלק מתהליך הכשרה של הטוען הרבני לומדים כמות גדולה של פסקי דין, ואף נבחנים עליהם, דבר שמוסיף ידע לטוען בכל הקשור לפסיקות בתי הדין.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© <span id="current-year"></span> כל הזכויות שמורות.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // עדכון שנה נוכחית בפוטר
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // אנימציה לטקסט המתחלף
+        const animatedTexts = ["תובע?", "נתבע?", "בהליכי גירושין?"];
+        let currentTextIndex = 0;
+        const animatedTextElement = document.getElementById('animated-text');
+
+        function typeText(text, index = 0) {
+            if (index < text.length) {
+                animatedTextElement.textContent = text.substring(0, index + 1);
+                setTimeout(() => typeText(text, index + 1), 100);
+            } else {
+                setTimeout(eraseText, 1000);
+            }
+        }
+
+        function eraseText() {
+            const text = animatedTextElement.textContent;
+            if (text.length > 0) {
+                animatedTextElement.textContent = text.substring(0, text.length - 1);
+                setTimeout(eraseText, 50);
+            } else {
+                currentTextIndex = (currentTextIndex + 1) % animatedTexts.length;
+                setTimeout(() => typeText(animatedTexts[currentTextIndex]), 500);
+            }
+        }
+
+        // התחלת האנימציה
+        setTimeout(() => typeText(animatedTexts[currentTextIndex]), 1000);
+
+        // טיפול בשאלות נפוצות
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('.faq-icon');
+                
+                const isActive = answer.classList.contains('active');
+                
+                // סגירת כל התשובות הפתוחות
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-icon').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // אם התשובה הייתה סגורה, פתח אותה
+                if (!isActive) {
+                    answer.classList.add('active');
+                    icon.classList.add('active');
+                }
+            });
+        });
+
+        // טיפול בטופס יצירת קשר
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // כאן בדרך כלל תהיה פונקציית שליחת הטופס לשרת
+            // במקום זה, נציג הודעת הצלחה
+            alert('תודה שיצרת קשר! נחזור אליך בהקדם.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
